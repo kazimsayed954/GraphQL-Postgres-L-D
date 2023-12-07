@@ -2,13 +2,13 @@ const { pool } = require("../../utils/DB");
 
 const roleMutation = {
     addRole:async(_,args)=>{
-        const { title,salary } = args.role;
+        const { title } = args.role;
       
         try {
           const client = await pool.connect();
           const result = await client.query(
-            'INSERT INTO public.roles (title,salary) VALUES ($1,$2) RETURNING *',
-            [ title,salary]
+            'INSERT INTO public.roles (title) VALUES ($1) RETURNING *',
+            [ title]
           );
           client.release();
           return result.rows[0];

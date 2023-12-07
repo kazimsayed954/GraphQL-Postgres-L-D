@@ -1,4 +1,6 @@
 const { pool } = require("../utils/DB");
+const employeeQueryService = require("./QueryService/employeeQuery");
+
 const QueryService = {
   getUsers: async () => {
     try {
@@ -46,6 +48,7 @@ const QueryService = {
       throw new Error("Failed to fetch users");
     }
   },
+  ...employeeQueryService,
 };
 
 module.exports = QueryService;

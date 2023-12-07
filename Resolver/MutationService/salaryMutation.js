@@ -2,7 +2,7 @@ const { pool } = require("../../utils/DB");
 
 const salaryMutation = {
   addSalary: async (_, args) => {
-    const { employee_id, salary } = args.salary;
+    const { employee_id, salary } = args;
     const date = new Date(Date.now()/1000);
 
     try {

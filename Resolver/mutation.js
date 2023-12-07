@@ -2,6 +2,7 @@ const { pool } = require("../utils/DB");
 const roleMutation = require("./MutationService/roleMutation");
 const departmentMutation = require("./MutationService/departmentMutation");
 const employeeMutation = require("./MutationService/empoyeeMutation");
+const salaryMutation = require("./MutationService/salaryMutation");
 
 const MutationService = {
   addUser: async (_, args) => {
@@ -73,7 +74,8 @@ const MutationService = {
   },
   ...departmentMutation,
   ...employeeMutation,
-  ...roleMutation
+  ...roleMutation,
+  ...salaryMutation
 };
 
 module.exports = MutationService;

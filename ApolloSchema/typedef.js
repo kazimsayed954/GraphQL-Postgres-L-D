@@ -28,10 +28,30 @@ type Employee{
     department_id:ID
 }
 
+type Salary{
+    employee_id:ID
+    salary:Int
+    date:String
+}
+
+type EmployeeAndRoles{
+    employee_id:ID
+    role_id:ID
+    date:String
+    first_name:String
+    last_name:String
+    email:String
+    hire_date:String
+    department_id:ID,
+    title:String
+    salary:Int
+}
+
 type Query{
     getUsers:[User]
     getUser(id:ID!):User
     getUserByName(query:String!):[User]
+    getEmployeeAndRoles:[EmployeeAndRoles]
 }
 
 type Mutation{
@@ -41,6 +61,9 @@ type Mutation{
     addDepartment(name:String!):Department
     addEmployee(department_id:ID!,employee:addEmployeeInput!):Employee
     addRole(role:addRoleInput!):Role
+    addEmployeeAndRole(employee_id:ID!,role_id:ID!):EmployeeAndRoles
+    addSalary(employee_id:ID!,salary:Int!):Salary
+    deleteEmployeeAndRole(employee_id:ID!):Boolean
 }
 
 input addUserDataInput{
@@ -63,7 +86,6 @@ input addEmployeeInput{
 
 input addRoleInput{
     title:String!
-    salary:Int!
 }
 `;
 

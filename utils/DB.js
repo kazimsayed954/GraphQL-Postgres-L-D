@@ -4,7 +4,7 @@ const pool = new Pool({
   user: "learning",
   password: "learning",
   host: "localhost",
-  database: "typeorm_learning_01",
+  database: "postgres-learning&development",
   port: 5432,
 });
 
