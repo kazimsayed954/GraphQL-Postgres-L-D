@@ -46,7 +46,6 @@ const createTables = async () => {
 
 createTables();
 
-
 // -- Alter the foreign key constraints to include ON DELETE CASCADE
 
 // -- Alter employee_roles table
@@ -64,4 +63,3 @@ createTables();
 // FOREIGN KEY (employee_id)
 // REFERENCES public.employees(employee_id)
 // ON DELETE CASCADE; -- Set the ON DELETE CASCADE action
-

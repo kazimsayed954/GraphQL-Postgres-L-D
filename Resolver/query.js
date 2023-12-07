@@ -1,4 +1,5 @@
 const { pool } = require("../utils/DB");
+const departmentQueryService = require("./QueryService/departmentService");
 const employeeQueryService = require("./QueryService/employeeQuery");
 
 const QueryService = {
@@ -49,6 +50,7 @@ const QueryService = {
     }
   },
   ...employeeQueryService,
+  ...departmentQueryService
 };
 
 module.exports = QueryService;
