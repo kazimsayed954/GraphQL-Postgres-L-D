@@ -13,7 +13,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-
 });
 
 // Start the ApolloServer

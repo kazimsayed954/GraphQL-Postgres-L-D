@@ -1,10 +1,11 @@
+const { pool } = require("../../utils/DB");
+
 const departmentQueryService = {
     getDepartments: async () => {
         try {
           const client = await pool.connect();
           const result = await client.query(
-            `SELECT * FROM public.departments
-                `
+            "SELECT * FROM public.departments ORDER BY department_id ASC"
           );
           client.release(); // Release the client back to the pool
           return result.rows; // Return the query result

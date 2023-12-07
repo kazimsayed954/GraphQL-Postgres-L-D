@@ -53,7 +53,7 @@ type Query{
     getUserByName(query:String!):[User]
     getEmployeeAndRoles:[EmployeeAndRoles]
     getEmployeeAndRolesById(employee_id:ID!):EmployeeAndRoles
-    getDepartments:Department
+    getDepartments:[Department]
 }
 
 type Mutation{
