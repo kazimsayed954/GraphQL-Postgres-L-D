@@ -1,6 +1,7 @@
 const { pool } = require("../utils/DB");
 const departmentQueryService = require("./QueryService/departmentService");
 const employeeQueryService = require("./QueryService/employeeQuery");
+const roleQueryService = require("./QueryService/roleQueryService");
 
 const QueryService = {
   getUsers: async () => {
@@ -50,7 +51,8 @@ const QueryService = {
     }
   },
   ...employeeQueryService,
-  ...departmentQueryService
+  ...departmentQueryService,
+  ...roleQueryService
 };
 
 module.exports = QueryService;

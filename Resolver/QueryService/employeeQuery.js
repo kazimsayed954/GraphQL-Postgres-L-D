@@ -47,6 +47,31 @@ const employeeQueryService = {
       throw new Error("Failed to fetch user");
     }
   },
+  getEmployeeAndRolesWithSearch: async (_, { searchTerm }) => {    
+    try {
+      const client = await pool.connect();
+      const result = await client.query(
+        `
+        SELECT e.*, r.title AS role_title, s.salary
+        FROM public.employees e
+        LEFT JOIN public.employee_roles er ON e.employee_id = er.employee_id
+        LEFT JOIN public.roles r ON er.role_id = r.role_id
+        LEFT JOIN public.salaries s ON e.employee_id = s.employee_id
+        WHERE 
+          TRIM(e.first_name) ILIKE $1 
+          OR TRIM(e.last_name) ILIKE $1 
+          OR TRIM(e.email) ILIKE $1
+        `,
+        [`%${searchTerm}%`]
+      );
+
+      client.release(); // Release the client back to the pool
+      return result.rows; // Return the query result
+    } catch (err) {
+      console.error("Error executing query", err);
+      throw new Error("Failed to fetch users");
+    }
+  },
 };
 
 module.exports = employeeQueryService;

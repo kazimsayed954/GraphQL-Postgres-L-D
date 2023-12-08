@@ -45,6 +45,7 @@ type EmployeeAndRoles{
     department_id:ID,
     title:String
     salary:Int
+    role_title:String
 }
 
 type Query{
@@ -54,6 +55,8 @@ type Query{
     getEmployeeAndRoles:[EmployeeAndRoles]
     getEmployeeAndRolesById(employee_id:ID!):EmployeeAndRoles
     getDepartments:[Department]
+    getRoles:[Role]
+    getEmployeeAndRolesWithSearch(searchTerm:String):[EmployeeAndRoles]
 }
 
 type Mutation{
